@@ -1,0 +1,36 @@
+<h1>Big To Do</h1>
+
+<ul class="tasks">
+<% @tasks.each do |task_record| %>
+  <li id="task-<%= task_record.id %>">
+    <%= task_record.name %>
+    <%= task_record.description %>
+    <%= task_record.due_date %>
+    <%= task_record.employee %>
+    <%= link_to 'X', task_record, method: :delete, remote:true %>
+  </li>
+<%end%>
+
+</ul>
+
+<%= form_for(@task, remote: true) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :due_date %><br>
+    <%= f.datetime_select :due_date %>
+  </div>
+  <div class="field">
+    <%= f.label :employee %><br>
+    <%= f.text_area :employee %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

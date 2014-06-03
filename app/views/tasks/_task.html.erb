@@ -1,0 +1,4 @@
+<li id="task-<%= @task.id %>">
+<%= link_to @task.name, @current, remote:true %>
+<%= link_to 'X', @current, method: :delete, remote:true %>
+</li>
